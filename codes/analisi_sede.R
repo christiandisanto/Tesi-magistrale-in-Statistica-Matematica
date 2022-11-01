@@ -1,6 +1,6 @@
 library("readxl")
 #carichiamo il dataset 
-datimiei<-as.data.frame(read_excel("dati_2021_data_spesa_sede.xlsx"))
+datimiei<-as.data.frame(read_excel("../datasets/year/dati_2021_data_spesa_sede.xlsx"))
 
 # Calcolo delle frequenze assolute
 table(datimiei$Sede)
