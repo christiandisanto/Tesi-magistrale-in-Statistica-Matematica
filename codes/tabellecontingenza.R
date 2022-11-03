@@ -1,6 +1,6 @@
 #tabelle di contingenza
 library("readxl")
-datimiei<-as.data.frame(read_excel("dati_2021_data_spesa_sede.xlsx"))
+datimiei<-as.data.frame(read_excel("../datasets/year/dati_2021_data_spesa_sede.xlsx"))
 n<-nrow(datimiei)
 n
 classiprezzo<-c(cut(datimiei$Prezzo,breaks = c(0,500,2000,4000,10000)))

@@ -1,27 +1,29 @@
+#funzione moda
+#in R non esiste una funzione predefinita, si può usare una funzione opportuna
+getmode<-function(v){ 
+  uniqv<-unique(v) #crea un vettore senza duplicati
+  uniqv[which.max(tabulate(match(v,uniqv)))]
+}
 library("readxl")
+
 #carichiamo il dataset 
-datimiei<-as.data.frame(read_excel("../datasets/year/dati_2021_data_spesa_sede.xlsx"))
+datimiei<-as.data.frame(read_excel("../datasets/locals/sede_U.xlsx"))
 #calcoliamo la lunghezza del campione
 n<-nrow(datimiei)
 n
 
+#ANALISI DEL PREZZO
 #PRINCIPALI INDICI DI POSIZIONE
-#mediana
-media<-mean(datimiei$Prezzo)
+#media
+media<-round(mean(datimiei$Prezzo),3)
 media
 
 #moda
-#in R non esiste una funzione predefinita, si può usare una funzione opportuna
-getmode<-function(v){ 
-uniqv<-unique(v) #crea un vettore senza duplicati
-uniqv[which.max(tabulate(match(v,uniqv)))]
-}
- 
-moda<-getmode(datimiei$Prezzo)
+moda<-round(getmode(datimiei$Prezzo),3)
 moda
 
 #mediana
-mediana<-median(datimiei$Prezzo)
+mediana<-round(median(datimiei$Prezzo),3)
 mediana
 
 #quantili
@@ -64,26 +66,23 @@ asimpearson
 
 
 #frequenze assolute
-table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))
-
-#frequenze relative
+FREQ<-table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))
+FREQ
+#frequenze relative 
 round(table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))/length(datimiei$Prezzo),digits = 2)
 
-#istogramma
-hist(datimiei$Prezzo,breaks=c(0,50,150,350,10600),main="Istogramma")
+par(mfrow=c(1,2))
+#DISEGNO ISTOGRAMMA E BOX PLOT
+#hist(datimiei$Prezzo,breaks=c(0,10,30,50,70,90,110,200,300,400,500,600,1000,2000,3000,4000,5000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
+hist(datimiei$Prezzo,breaks=c(0,50,150,350,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
+boxplot(datimiei$Prezzo,main="Box plot",ylab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
+par(mfrow=c(1,1))
 
-#CALCOLO DEL BOX PLOT
-
+#Per quanto riguarda il box plot è bene osservare anche i valori dei cardini 
 #calcolo dei cardini 
 cardine1<-quantile(datimiei$Prezzo)[[2]]-1.5*(quantile(datimiei$Prezzo)[[4]]-quantile(datimiei$Prezzo)[[2]])
 cardine1
 cardine2<-quantile(datimiei$Prezzo)[[4]]+1.5*(quantile(datimiei$Prezzo)[[4]]-quantile(datimiei$Prezzo)[[2]])
 cardine2
-
-#disegno del box plot
-boxplot(datimiei$Prezzo,xlab="prezzi",col="red",ylim=c(0,300))
-#le estremità della scatola sono in corrispondenza di Q1,Q2 e Q3, mentre la linea centrale è Q2.
-#Il primo baffo ha la lunghezza data dalla differenza tra Q1 ed il minimo (del campione privo di outliers)
-#Il secondo baffo ha lunghezza data dalla differenza tra il massimo (del campione privo di outliers) e Q3.
 
 
