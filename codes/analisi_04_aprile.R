@@ -73,7 +73,7 @@ round(table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))/length(datimiei$P
 
 par(mfrow=c(1,2))
 #DISEGNO ISTOGRAMMA E BOX PLOT
-hist(datimiei$Prezzo,breaks=c(0,50,150,350,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
+hist(datimiei$Prezzo,breaks=c(-1,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
 boxplot(datimiei$Prezzo,main="Box plot",ylab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
 par(mfrow=c(1,1))
 
@@ -103,7 +103,7 @@ moda<-getmode(datimiei$Sede)
 moda
 
 #TABELLA DI CONTINGENZA 
-classiprezzo<-c(cut(datimiei$Prezzo,breaks = c(0,500,2000,4000,10000)))
+classiprezzo<-c(cut(datimiei$Prezzo,breaks = c(-1,500,2000,4000,10000)))
 fclassiprezzo<-factor(classiprezzo)
 levels(fclassiprezzo)<-c("(0-500]","(500-2000]","(2000-4000]","(4000-10000]")
 contingenza<-table(fclassiprezzo,datimiei$Sede)

@@ -88,7 +88,7 @@ par(mfrow=c(1,2))
 #DISEGNO ISTOGRAMMA E BOX PLOT
 #hist(datimiei$Prezzo,breaks=c(0,10,30,50,70,90,110,200,300,400,500,600,1000,2000,3000,4000,5000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
 hist(datimiei$Prezzo,breaks=c(0,50,150,350,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
-boxplot(datimiei$Prezzo,main="Box plot",ylab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
+boxplot(datimiei$Prezzo,main="Box plot",xlab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
 par(mfrow=c(1,1))
 
 #Per quanto riguarda il box plot è bene osservare anche i valori dei cardini 
