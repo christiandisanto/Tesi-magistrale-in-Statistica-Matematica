@@ -71,11 +71,10 @@ table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))
 #frequenze relative 
 round(table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))/length(datimiei$Prezzo),digits = 2)
 
-par(mfrow=c(1,2))
+
 #DISEGNO ISTOGRAMMA E BOX PLOT
-hist(datimiei$Prezzo,breaks=c(0,50,150,350,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
+hist(datimiei$Prezzo,breaks=c(0,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
 boxplot(datimiei$Prezzo,main="Box plot",ylab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
-par(mfrow=c(1,1))
 
 #Per quanto riguarda il box plot è bene osservare anche i valori dei cardini 
 #calcolo dei cardini 

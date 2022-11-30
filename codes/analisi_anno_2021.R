@@ -25,6 +25,8 @@ freqrelative<-prop.table(freqass)
 periodo<-data.frame(Mesi=mese,Frequenze_assolute=freqass,Frequenze_relative=round(freqrelative,3),
            Percentuali=round((freqrelative*100),1))
 periodo
+barplot(periodo$Frequenze_assolute, xlab = "mesi", ylab = "numero di acquisti",col = "blue")
+
 #ANALISI DEL PREZZO
 #PRINCIPALI INDICI DI POSIZIONE
 #media
@@ -84,12 +86,11 @@ FREQ
 #frequenze relative 
 round(table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))/length(datimiei$Prezzo),digits = 2)
 
-par(mfrow=c(1,2))
+
 #DISEGNO ISTOGRAMMA E BOX PLOT
-#hist(datimiei$Prezzo,breaks=c(0,10,30,50,70,90,110,200,300,400,500,600,1000,2000,3000,4000,5000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
-hist(datimiei$Prezzo,breaks=c(0,50,150,350,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
+hist(datimiei$Prezzo,breaks=c(0,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
 boxplot(datimiei$Prezzo,main="Box plot",xlab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
-par(mfrow=c(1,1))
+
 
 #Per quanto riguarda il box plot è bene osservare anche i valori dei cardini 
 #calcolo dei cardini 

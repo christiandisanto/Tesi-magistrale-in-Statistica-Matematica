@@ -1,5 +1,5 @@
-#funzione moda
-#in R non esiste una funzione predefinita, si può usare una funzione opportuna
+#Funzione moda
+#In R non esiste una funzione predefinita, si può usare una funzione opportuna
 getmode<-function(v){ 
   uniqv<-unique(v) #crea un vettore senza duplicati
   uniqv[which.max(tabulate(match(v,uniqv)))]
@@ -8,11 +8,12 @@ getmode<-function(v){
 library("readxl")
 #carichiamo il dataset 
 datimiei<-as.data.frame(read_excel("../datasets/months/01_gennaio.xlsx"))
+
 #calcoliamo la lunghezza del campione
 n<-nrow(datimiei)
 n
 
-#########################################################################################
+###########################################################################
 #ANALISI DEL PREZZO
 #PRINCIPALI INDICI DI POSIZIONE
 #media
@@ -71,11 +72,12 @@ table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))
 #frequenze relative 
 round(table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))/length(datimiei$Prezzo),digits = 2)
 
-par(mfrow=c(1,2))
+
+
 #DISEGNO ISTOGRAMMA E BOX PLOT
-hist(datimiei$Prezzo,breaks=c(0,50,150,350,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
+hist(datimiei$Prezzo,breaks=c(0,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
 boxplot(datimiei$Prezzo,main="Box plot",ylab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
-par(mfrow=c(1,1))
+
 
 #Per quanto riguarda il box plot è bene osservare anche i valori dei cardini 
 #calcolo dei cardini 
