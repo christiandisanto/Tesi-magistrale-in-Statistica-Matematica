@@ -10,7 +10,6 @@ getmode<-function(v){
 }
 
 library("readxl")
-
 #carichiamo il dataset 
 datimiei<-as.data.frame(read_excel("../datasets/year/dati_2021_data_spesa_sede.xlsx"))
 #calcoliamo la lunghezza del campione
@@ -79,18 +78,16 @@ sigma<-sqrt((n-1)*var(datimiei$Prezzo)/n)
 asimpearson<-3*(media-mediana)/sigma
 asimpearson
 
-
 #frequenze assolute
-FREQ<-table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))
+FREQ<-table(cut(datimiei$Prezzo,breaks=c(-1,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600)))
 FREQ
-#frequenze relative 
-round(table(cut(datimiei$Prezzo,breaks=c(0,50,150,350,10600)))/length(datimiei$Prezzo),digits = 2)
 
+#frequenze relative 
+round(table(cut(datimiei$Prezzo,breaks=c(-1,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600)))/length(datimiei$Prezzo),digits = 2)
 
 #DISEGNO ISTOGRAMMA E BOX PLOT
-hist(datimiei$Prezzo,breaks=c(0,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
+hist(datimiei$Prezzo,breaks=c(-1,2,5,10,20,30,40,50,100,200,300,400,500,2000,4000,10600),main="Istogramma",xlab="prezzo",ylab ="intensità")
 boxplot(datimiei$Prezzo,main="Box plot",xlab="prezzo",col="red",ylim=c(0,300),horizontal = TRUE)
-
 
 #Per quanto riguarda il box plot è bene osservare anche i valori dei cardini 
 #calcolo dei cardini 
@@ -113,7 +110,6 @@ par(mfrow=c(1,2))
 plot(table(datimiei$Sede),ylab ="fr. assolute acquisti in sede")
 plot(frequenze_relative_perc,ylab="Percentuali acquisti in sede")
 par(mfrow=c(1,1))
-
 
 #moda
 moda<-getmode(datimiei$Sede)

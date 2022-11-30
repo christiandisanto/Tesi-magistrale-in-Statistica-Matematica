@@ -1,6 +1,6 @@
 library("readxl")
 #carichiamo il dataset 
-datimiei<-as.data.frame(read_excel("dataset_completo.xlsx",sheet = 3))
+datimiei<-as.data.frame(read_excel("../datasets/dataset_completo.xlsx",sheet = 3))
 
 #calcoliamo la lunghezza del campione
 n<-nrow(datimiei)
