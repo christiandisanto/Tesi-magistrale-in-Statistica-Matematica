@@ -134,11 +134,10 @@ ordinate2<-c(valc1,valc2,valc3)
 grafico2<-data.frame(ascisse2,ordinate2)
 
 #GRAFICO 2 (con ascisse e ordinate invertite)
+range(min(valc3)-0.01,max(valc3)+0.01)
 plot(grafico2$ascisse2,grafico2$ordinate2,xlim = c(0.000,0.200),ylim =c(min(valc3)-0.01,max(valc3)+0.01) ,xlab = "valori di alfa",ylab = "valori di c")
 #axis(2,at=seq(min(valc3)-0.001,max(valc3)+0.001,by=0.1),las=0)
 points(y1,valc1,col="red")
 points(y2,valc2,col="blue")
 points(y3,valc3,col="black")
 legend(locator(1),c("alfa=0.01","alfa=0.05","alfa=0.10"),pch=c(1,16),col=c("black","blue","red"))
-
-
